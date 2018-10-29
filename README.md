@@ -64,9 +64,9 @@ At the moment, here are the existing semantics and the questions they raise wher
 - A variable with qubits cannot be passed by value to a function only by reference. This restriction exists as well to enforce the no-cloning theorem 
 but also the language semantics. A quantum variable simply initializes a quantum register with specific data. To work with that data, we use references 
 since it is external data. But the user might ask: why then not declare the quantum variable as a reference to begin with (a la C++ *constant reference to temporary*)?
-- Qubits can not be used in value constructors nor can they parametrized generic type constructors (such as the `maybe(a)` type). This restriction exists to simplify things but 
+- Qubits can not be used in value constructors nor can they parametrize generic type constructors (such as the `maybe(a)` type). This restriction exists to simplify things but 
 if we were to lift it, how do we manage the memory layout of value constructors?
-- Only 1-Qubit gates and controlled gates of 1-Qubit gates can be created by the user. All other gates can derive from those. As is often said, a language cannot be made more power 
+- Only 1-Qubit gates and controlled gates of 1-Qubit gates can be created by the user. All other gates can derive from those. As is often said, a language cannot be made more powerful 
 by reducing the number of features it offers. Is there wisdom in allowing the creation of arbitrary (unitary) gates as QUIL allows?
 - All bit and qubit types are static in the sense that their size is fixed at compile time. How do we evolve this without having a noodle soup of data types? Are refinement types the answer? What is the amount of work required to make that a reality? Shall we go all the way to dependent types?
 
