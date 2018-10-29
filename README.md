@@ -15,7 +15,7 @@ In one language, Avalon provides both the classical components as well as quantu
 As of this writing, Avalon allows the creation of 1-Qubit quantum gates and in a week's time, it will be possible to have controlled gates parametrized by 1-Qubit gates.
 Qubit data types have a one-to-one correspondance with bit types which is excellent since when generating QUIL code, I can focus on those two data types to get started.
 
-The Avalon programming language is a statically typed language with type inference where it is not possible to deduce the complete type of a value (such as using the `None` value constructor).
+The Avalon programming language is a statically typed language with type inference where it is possible to deduce the complete type of a value else the type must be provided (such as using the `None` value constructor).
 It is based on algebraic data types with pattern matching to deconstruct values. Unlike Haskell, Avalon doesn't offer referential transparency. Except for select data types, the values contained
 in variables can be changed.  
 
