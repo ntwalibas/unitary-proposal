@@ -30,7 +30,7 @@ is most certainly preferable since it offers a clear syntax, predictable semanti
 And the most important aspect of preferring a fully featured programming language over an SDK is the ease of learning for users already familiar with similar languages.  
 And that is the primary objective of Avalon: **make quantum computers programming available to the regular developer**.
 
-It is goes without saying that higher-level programming languages are much easier to work with the assembly code.
+It is goes without saying that higher-level programming languages are much easier to work with than assembly code.
 
 ## Features to be ported to the Rigetti stack
 
@@ -39,8 +39,8 @@ If we consider the Rigetti 8Q-Agave quantum processor with 8 qubits as a reasona
 a lot of the native data types would not fit into available registers.  
 Therefore, as initial native data types, only qubits, bits and integers will be ported.
 
-The language also offers the possiblity to created user data types (even generic ones) and considering that the whole generated program is to run on the Rigetti stack,
-it is not wise to enable this feature for the moment.
+The language also offers the possiblity to create user data types (even generic ones) and considering that the whole generated program is to run on the Rigetti stack,
+it is not wise to enable this feature at the moment.
 
 Avalon functions can also be parametrized (as in Haskell) and they even have a feature we call *extended overloading* where two functions with the same names and parameters can have different return types.
 Depending on what I am able to accomplish (efficiently) with the Rigetti stack, some of those features may be disabled.
@@ -51,7 +51,7 @@ In 4 months, users on Linux systems will be able to generate QUIL code and run i
 The 4 months will be used as follow:  
 
 - 1 month to port native data types
-- 2 month to port function declarations and variable declarations.
+- 2 months to port function declarations and variable declarations.
 - 1 month to write a tutorial and a reference documentation (this has already started at [Avalon documentation](https://avalon-lang.readthedocs.io)).
 
 ## Challenges
@@ -60,10 +60,11 @@ What exactly are the semantics of quantum constructs in a high-level programming
 At the moment, here are the existing semantics and the questions they raise where applicable:
 
 - Variables initialized with qubits cannot modified later.
-- A variable with qubits cannot be can used as r-value of an assignment (this in keeping with no-cloning).
+- A variable with qubits cannot be used as an r-value of an assignment (this in keeping with no-cloning).
+- References to qubits cannot be dereferenced (also in keeping with no-cloning).
 - A variable with qubits cannot be passed by value to a function only by reference. This restriction exists as well to enforce the no-cloning theorem 
 but also the language semantics. A quantum variable simply initializes a quantum register with specific data. To work with that data, we use references 
-since it is external data. But the user might ask: why then not declare the quantum variable as a reference to begin with (a la C++ *constant reference to temporary*)?
+since it is external data. But the user might ask: why then not declare the quantum variable as a reference to begin with qubits (a la C++ *constant reference to temporary*)?
 - Qubits can not be used in value constructors nor can they parametrize generic type constructors (such as the `maybe(a)` type). This restriction exists to simplify things but 
 if we were to lift it, how do we manage the memory layout of value constructors?
 - Only 1-Qubit gates and controlled gates of 1-Qubit gates can be created by the user. All other gates can derive from those. As is often said, a language cannot be made more powerful 
@@ -72,7 +73,7 @@ by reducing the number of features it offers. Is there wisdom in allowing the cr
 
 Here is what is missing but is absolutely important to make the language more useful:
 
-- Multi-qubits types are not currently indexable. This is important in order allow applying controlled gates to the same variables for instance without splitting a single variable into 1-Qubit variables. What are the semantics of indexing?
+- Multi-qubits types are not currently indexable. This is important in order allow applying controlled gates to the same variable, for instance, without splitting a single variable into 1-Qubit variables. What are the semantics of indexing?
 
 ## Post-completion of the project
 
