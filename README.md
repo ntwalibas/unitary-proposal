@@ -24,8 +24,8 @@ This should make the language easier on newcomers to get acquainted with.
 
 ## Objective in creating the language
 
-While SDKs are certainly useful is the own right in offering an interface where no language are available, having a fully-featured language that directly targets the stack of interest
-is most certainly preferable since it offers a clear syntax, predictable semantics that are made visible by the syntax and enforced by the compiler (e.g. in Avalon, a variable containing qubits cannot be an rval to an assignment expression in keeping with the no-cloning theorem).  
+While SDKs are certainly useful is their own right in offering an interface where no languages are available, having a fully-featured language that directly targets the stack of interest
+is most certainly preferable since it offers a clear syntax, predictable semantics that are made visible by the syntax and enforced by the compiler (e.g. in Avalon, a variable containing qubits cannot be an r-value to an assignment expression in keeping with the no-cloning theorem).  
 
 And the most important aspect of preferring a fully featured programming language over an SDK is the ease of learning for users already familiar with similar languages.  
 And that is the primary objective of Avalon: **make quantum computers programming available to the regular developer**.
@@ -60,7 +60,7 @@ What exactly are the semantics of quantum constructs in a high-level programming
 At the moment, here are the existing semantics and the questions they raise where applicable:
 
 - Variables initialized with qubits cannot modified later.
-- A variable with qubits cannot be can used as rval of an assignment (this in keeping with no-cloning).
+- A variable with qubits cannot be can used as r-value of an assignment (this in keeping with no-cloning).
 - A variable with qubits cannot be passed by value to a function only by reference. This restriction exists as well to enforce the no-cloning theorem 
 but also the language semantics. A quantum variable simply initializes a quantum register with specific data. To work with that data, we use references 
 since it is external data. But the user might ask: why then not declare the quantum variable as a reference to begin with (a la C++ *constant reference to temporary*)?
