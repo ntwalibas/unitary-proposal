@@ -54,7 +54,7 @@ The 4 months will be used as follow:
 - 2 month to port function declarations and variable declarations.
 - 1 month to write a tutorial and a reference documentation (this has already started at [Avalon documentation](https://avalon-lang.readthedocs.io)).
 
-## Challenge
+## Challenges
 
 What exactly are the semantics of quantum constructs in a high-level programming language?  
 At the moment, here are the existing semantics and the questions they raise where applicable:
