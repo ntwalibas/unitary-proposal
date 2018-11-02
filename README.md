@@ -12,7 +12,7 @@ While this is convinient for immediate prototyping, it doesn't lend itself for p
 Microsoft has made excellent work with Q# but it requires linking with a C# program to act as driver.  
 In one language, Avalon provides both the classical components as well as quantum constructs.
 
-As of this writing, Avalon allows the creation of 1-Qubit quantum gates and in a week's time, it will be possible to have controlled gates parametrized by 1-Qubit gates.
+As of this writing, Avalon allows the creation of 1-Qubit quantum gates and controlled gates parametrized by 1-Qubit gates.
 Qubit data types have a one-to-one correspondance with bit types which is excellent since when generating QUIL code, I can focus on those two data types to get started.
 
 The Avalon programming language is a statically typed language with type inference where it is possible to deduce the complete type of a value else the type must be provided (such as using the `None` value constructor).
