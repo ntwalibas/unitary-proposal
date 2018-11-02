@@ -30,7 +30,7 @@ is most certainly preferable since it offers a clear syntax, predictable semanti
 And the most important aspect of preferring a fully featured programming language over an SDK is the ease of learning for users already familiar with similar languages.  
 And that is the primary objective of Avalon: **make quantum computers programming available to the regular developer**.
 
-It is goes without saying that higher-level programming languages are much easier to work with than assembly code.
+It goes without saying that higher-level programming languages are much easier to work with than assembly code.
 
 ## Features to be ported to the Rigetti stack
 
@@ -70,6 +70,8 @@ if we were to lift it, how do we manage the memory layout of value constructors?
 - Only 1-Qubit gates and controlled gates of 1-Qubit gates can be created by the user. All other gates can derive from those. As is often said, a language cannot be made more powerful 
 by reducing the number of features it offers. Is there wisdom in allowing the creation of arbitrary (unitary) gates as QUIL allows?
 - All bit and qubit types are static in the sense that their size is fixed at compile time. How do we evolve this without having a noodle soup of data types? Are refinement types the answer? What is the amount of work required to make that a reality? Shall we go all the way to dependent types?
+- The language strives to limit the number possible runtime errors (no allowance of undefined behavior for instance) through the type system, how do we use this to
+disallow the application of unitary gates on a qubit after it has been measured?
 
 Here is what is missing but is absolutely important to make the language more useful:
 
