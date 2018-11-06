@@ -82,6 +82,11 @@ Here is what is missing but is absolutely important to make the language more us
 Understanding the semantics of quantum types and functions that work on them is of interest.  
 Publishing a paper that details the decisions that guided the semantics of Avalon is not without merit and something I look forward to doing at the end of the project.
 
+## Addendum
+
+The interpreter is still buggy and inefficient. There is one bug right now that will not allow to do anything
+beyond simple examples (quantum teleportation will not work for instance) and needs fixing. Kindly be patient as I fix it.
+
 ## References
 
 [Quil Instruction Set Architecture](https://arxiv.org/abs/1608.03355)  
