@@ -86,10 +86,90 @@ Here is what is missing but is absolutely important to make the language more us
 Understanding the semantics of quantum types and functions that work on them is of interest.  
 Publishing a paper that details the decisions that guided the semantics of Avalon is not without merit and something I look forward to doing at the end of the project.
 
-## Addendum
+## Demonstration
 
-The interpreter is still buggy and inefficient. There is one bug right now that will not allow to do anything
-beyond simple examples (quantum teleportation will not work for instance) and needs fixing. Kindly be patient as I fix it.
+Please find below two programs to perform the teleportation of a single qubit.  
+
+### Avalon sample
+
+Please note how easy it is to follow the program's logic. This level of clarity is what is guiding the design of the language and the move from low-level code or SDKs.
+
+```
+import io
+import quant
+
+def __main__ = (val args : [string]) -> void:
+    -- initialize quantum variables
+    val source = 0q1,
+        destination = 0q0,
+        ancilla = 0q0
+
+    -- create an entanglement between the destination and the ancilla
+    Quant.had(ref destination)
+    Quant.cx(ref destination, ref ancilla)
+
+    -- perform the teleportation
+    Quant.cx(ref source, ref ancilla)
+    Quant.had(ref source)
+
+    -- measure the source and the ancilla
+    var source_bit = cast(ref source) -> bit,
+        ancilla_bit = cast(ref ancilla) -> bit
+
+    -- perform error correction on the destination
+    if source_bit == 0b1:
+        Quant.pz(ref destination)
+    if ancilla_bit == 0b1:
+        Quant.px(ref destination)
+
+    -- measure and print the destination which should contain <0q1>
+    var destination_bit = cast(ref destination) -> bit
+    Io.println(string(destination_bit))
+
+    return
+```
+
+### QUIL Python SDK sample
+
+The use of the SDK makes it easy to create quick prototype but resists scaling to larger programs.  
+Moreover, since the hardware primitives are exposed, following the program's logic gets harder even for relatively simple programs.
+
+```Python
+from pyquil.quil import Program
+from pyquil import api
+from pyquil.gates import X, Z, H, CNOT
+
+if __name__ == '__main__':
+    qvm = api.QVMConnection()
+
+    # initialize qubit 0 in |1>
+    program = Program(X(0))
+
+    # declare classical memory
+    ro = program.declare('ro')
+    
+    # create an entanglement between the destination and the ancilla
+    program.inst(H(destination)
+    program.inst(CNOT(destination, ancilla))
+
+    # do the teleportation
+    program.inst(CNOT(source, ancilla))
+    program.inst(H(source))
+
+    # measure the results and store them in classical registers [0] and [1]
+    program.measure(source, ro[0])
+    program.measure(ancilla, ro[1])
+
+    # perform error correction
+    program.if_then(ro[1], X(2))
+    program.if_then(ro[0], Z(2))
+
+    # measure the destination
+    program.measure(destination, ro[2])
+
+    # print some useful result
+    print("Teleporting |0> state: {}".format(qvm.run(program, [2])))
+```
 
 ## References
 
