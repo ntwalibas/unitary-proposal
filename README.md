@@ -135,7 +135,9 @@ The use of the SDK makes it easy to create quick prototype but resists scaling t
 Moreover, since the hardware primitives are exposed, following the program's logic gets harder even for relatively simple programs.
 
 ```Python
-# Adapted from <https://github.com/rigetticomputing/pyquil/blob/master/examples/teleportation.py>
+"""
+Adapted from <https://github.com/rigetticomputing/pyquil/blob/master/examples/teleportation.py>
+"""
 from pyquil.quil import Program
 from pyquil import api
 from pyquil.gates import X, Z, H, CNOT
@@ -148,25 +150,29 @@ if __name__ == '__main__':
 
     # declare classical memory
     ro = program.declare('ro')
+    # declarate quantum addresses
+    source = 0
+    destination = 2
+    ancilla = 1
 
     # create an entanglement between the destination and the ancilla
-    program.inst(H(2)
-    program.inst(CNOT(2, 1))
+    program.inst(H(destination)
+    program.inst(CNOT(destination, ancilla))
 
     # do the teleportation
-    program.inst(CNOT(0, 1))
-    program.inst(H(0))
+    program.inst(CNOT(source, ancilla))
+    program.inst(H(source))
 
     # measure the results and store them in classical registers [0] and [1]
-    program.measure(0, ro[0])
-    program.measure(1, ro[1])
+    program.measure(source, ro[0])
+    program.measure(ancilla, ro[1])
 
     # perform error correction
     program.if_then(ro[1], X(2))
     program.if_then(ro[0], Z(2))
 
     # measure the destination
-    program.measure(2, ro[2])
+    program.measure(destination, ro[2])
 
     # print some useful result
     print("Teleporting |1> state: {}".format(qvm.run(program, [2])))
