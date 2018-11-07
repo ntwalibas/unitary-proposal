@@ -147,7 +147,7 @@ if __name__ == '__main__':
 
     # declare classical memory
     ro = program.declare('ro')
-    
+
     # create an entanglement between the destination and the ancilla
     program.inst(H(destination)
     program.inst(CNOT(destination, ancilla))
@@ -168,7 +168,7 @@ if __name__ == '__main__':
     program.measure(destination, ro[2])
 
     # print some useful result
-    print("Teleporting |0> state: {}".format(qvm.run(program, [2])))
+    print("Teleporting |1> state: {}".format(qvm.run(program, [2])))
 ```
 
 ## References
