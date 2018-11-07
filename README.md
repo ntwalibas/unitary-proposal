@@ -28,7 +28,7 @@ While SDKs are certainly useful is their own right in offering an interface wher
 is most certainly preferable since it offers a clear syntax, predictable semantics that are made visible by the syntax and enforced by the compiler (e.g. in Avalon, a variable containing qubits cannot be an r-value to an assignment expression in keeping with the no-cloning theorem).  
 
 And the most important aspect of preferring a fully featured programming language over an SDK is the ease of learning for users already familiar with similar languages.  
-And that is the primary objective of Avalon: **make quantum computers programming available to the regular developer**.
+And that is the primary objective of Avalon: **make quantum computers programming accessible to the regular developer**.
 
 Let us also note in passing that even though there are quite a few quantum programming languages out there, it has been my unfortunate experience that all many seem to offer is syntax while still exposing the underlying hardware primitives. Many simply lack sufficient abstractions that make using the language a pleasant experience for the developer.
 
