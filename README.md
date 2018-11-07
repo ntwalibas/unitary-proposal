@@ -30,6 +30,10 @@ is most certainly preferable since it offers a clear syntax, predictable semanti
 And the most important aspect of preferring a fully featured programming language over an SDK is the ease of learning for users already familiar with similar languages.  
 And that is the primary objective of Avalon: **make quantum computers programming available to the regular developer**.
 
+Let us also note in passing that even though there are quite a few quantum programming languages out there, it has been my unfortunate experience that all many seem to offer is syntax while still exposing the underlying hardware primitives. Many simply lack sufficient abstractions that make using the language a pleasant experience for the developer.
+
+Paving the way to finding better abstractions that make quantum computers programming easier and pleasant to developers is the primary goal in creating Avalon.
+
 It goes without saying that higher-level programming languages are much easier to work with than assembly code.
 
 ## Features to be ported to the Rigetti stack
