@@ -56,7 +56,7 @@ The 4 months will be used as follow:
 
 - 1 month to port native data types
 - 2 months to port function declarations and variable declarations.
-- 1 month to write a tutorial and a reference documentation (this has already started at [Avalon documentation](https://avalon-lang.readthedocs.io)).
+- 1 month to write tutorials. The reference documentation is 80% done and can be found at [Avalon documentation](https://avalon-lang.readthedocs.io).
 
 ## Challenges
 
@@ -131,7 +131,7 @@ def __main__ = (val args : [string]) -> void:
 
 ### QUIL Python SDK sample
 
-The use of the SDK makes it easy to create quick prototype but resists scaling to larger programs.  
+The use of the SDK makes it easy to create quick prototypes but resists scaling to larger programs.  
 Moreover, since the hardware primitives are exposed, following the program's logic gets harder even for relatively simple programs.
 
 ```Python
@@ -150,7 +150,8 @@ if __name__ == '__main__':
 
     # declare classical memory
     ro = program.declare('ro')
-    # declarate quantum addresses
+
+    # declarare addresses for quantum data
     source = 0
     destination = 2
     ancilla = 1
