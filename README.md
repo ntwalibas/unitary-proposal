@@ -151,13 +151,13 @@ if __name__ == '__main__':
     # declare classical memory
     ro = program.declare('ro')
 
-    # declarare addresses for quantum data
+    # declare addresses for quantum data
     source = 0
     destination = 2
     ancilla = 1
 
     # create an entanglement between the destination and the ancilla
-    program.inst(H(destination)
+    program.inst(H(destination))
     program.inst(CNOT(destination, ancilla))
 
     # do the teleportation
@@ -169,8 +169,8 @@ if __name__ == '__main__':
     program.measure(ancilla, ro[1])
 
     # perform error correction
-    program.if_then(ro[1], X(2))
-    program.if_then(ro[0], Z(2))
+    program.if_then(ro[1], X(destination))
+    program.if_then(ro[0], Z(destination))
 
     # measure the destination
     program.measure(destination, ro[2])
