@@ -1,4 +1,4 @@
-# Avalon - a classical/quantum programming language
+# Avalon - a classical/quantum programming language [Accepted!]
 
 This proposal to the unitary fund is for exploring the creation of a classical/quantum programming language.  
 The [Avalon Programming Language](https://github.com/avalon-lang/avaloniq) is a working programming language that allows the creation of qubits and the application of quantum gates to those qubits.  
@@ -178,6 +178,11 @@ if __name__ == '__main__':
     # print some useful result
     print("Teleporting |1> state: {}".format(qvm.run(program, [2])))
 ```
+
+## Outcome
+
+The proposal has been accepted and the same is reflected on the [unitary fund](unitary.fund) website.
+Thanks to Dr Will J. Zeng et al. for running the fund, effectively helping push quantum computing forward.
 
 ## References
 
